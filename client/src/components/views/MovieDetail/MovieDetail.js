@@ -88,6 +88,7 @@ function MovieDetailPage(props) {
             {/* Body */}
             <div style={{ width: '85%', margin: '1rem auto' }}>
 
+                {/* Movie Favorite */}
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')} />
                 </div>
