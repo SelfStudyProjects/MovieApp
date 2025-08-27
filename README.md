@@ -10,4 +10,5 @@ To use this application,
 
 ![alt text](image.png)
 
+
 위 이미지는 제가 사용한 기술 스탯들입니다.
