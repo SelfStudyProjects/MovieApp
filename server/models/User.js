@@ -41,10 +41,10 @@ userSchema.pre('save', function( next ) {
     
     if(user.isModified('password')){    
         // console.log('password changed')
-        bcryptjs.genSalt(saltRounds, function(err, salt){
+        bcrypt.genSalt(saltRounds, function(err, salt){
             if(err) return next(err);
     
-            bcryptjs.hash(user.password, salt, function(err, hash){
+            bcrypt.hash(user.password, salt, function(err, hash){
                 if(err) return next(err);
                 user.password = hash 
                 next()
@@ -56,7 +56,7 @@ userSchema.pre('save', function( next ) {
 });
 
 userSchema.methods.comparePassword = function(plainPassword,cb){
-    bcryptjs.compare(plainPassword, this.password, function(err, isMatch){
+    bcrypt.compare(plainPassword, this.password, function(err, isMatch){
         if (err) return cb(err);
         cb(null, isMatch)
     })
