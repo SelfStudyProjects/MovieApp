@@ -7,6 +7,7 @@ router.post('/favoriteNumber', (req, res) => {
     //mongoDB에서   favorite 숫자를 가져오기 
     Favorite.find({ "movieId": req.body.movieId })
         .exec((err, info) => {
+            // info는 항상 배열 (비어있거나 데이터가 있거나)
             if (err) return res.status(400).send(err)
             // 그다음에   프론트에  다시   숫자 정보를 보내주기  
             res.status(200).json({ success: true, favoriteNumber: info.length })
@@ -25,7 +26,7 @@ router.post('/favorited', (req, res) => {
             // 그다음에   프론트에  다시   숫자 정보를 보내주기  
 
             let result = false;
-            if (info.length !== 0) {
+            if (info.length !== 0) {    // 데이터가 있으면 true
                 result = true
             }
 
